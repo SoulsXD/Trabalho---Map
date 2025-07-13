@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Controle de Estoque Online</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav>
+    <button id="btn-mostrar-adicionar">Adicionar</button>
+    <button id="btn-mostrar-buscar">Buscar</button>
+    <button id="btn-mostrar-remover">Remover</button>
+    <button id="btn-mostrar-listar">Listar</button>
+  </nav>
+
+  <div class="content">
+    
+    <!-- Adicionar Produto -->
+    <section id="sec-adicionar" style="display:none;">
+      <h2>Adicionar Produto</h2>
+      <label for="add-id">ID:</label>
+      <input type="text" id="add-id" />
+      <label for="add-nome">Nome:</label>
+      <input type="text" id="add-nome" />
+      <label for="add-quantidade">Quantidade:</label>
+      <input type="number" id="add-quantidade" min="0" />
+      <button id="btn-adicionar">Adicionar</button>
+    </section>
+
+    <!-- Buscar Produto -->
+    <section id="sec-buscar" style="display:none;">
+      <h2>Buscar Produto</h2>
+      <label for="buscar-id">ID do produto:</label>
+      <input type="text" id="buscar-id" />
+      <button id="btn-buscar">Buscar</button>
+      <p id="resultado-busca"></p>
+    </section>
+
+    <!-- Remover Produto -->
+    <section id="sec-remover" style="display:none;">
+      <h2>Remover Produto</h2>
+      <label for="remover-id">ID do produto:</label>
+      <input type="text" id="remover-id" />
+
+      <label for="remover-quantidade">Quantidade a remover (deixe vazio para remover tudo):</label>
+      <input type="number" id="remover-quantidade" min="0" />
+
+      <button id="btn-remover">Remover</button>
+    </section>
+
+    <!-- Listar Produtos -->
+    <section id="sec-listar" style="display:none;">
+      <h2>Lista de Produtos</h2>
+      <button id="btn-listar">Atualizar Lista</button>
+      <ul id="lista-estoque"></ul>
+    </section>
+
+    <p id="msg-geral"></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
