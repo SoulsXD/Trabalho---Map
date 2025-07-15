@@ -4,16 +4,16 @@ interface Produto {
   quantidade: number;
 }
 
-// Mapa que representa o estoque, com ID como chave e Produto como valor
+// Mapa com chave string ID
 let estoque = new Map<string, Produto>();
 
-// Função que salva o conteúdo do estoque no localStorage (persistência de dados)
+//salva local storage
 function salvarNoLocalStorage() {
   const arr = Array.from(estoque.entries());
   localStorage.setItem('estoque', JSON.stringify(arr));
 }
 
-// Função que carrega os dados do localStorage ao iniciar a aplicação
+// carrega local storage
 function carregarDoLocalStorage() {
   const dados = localStorage.getItem('estoque');
   if (dados) {
@@ -30,7 +30,7 @@ function mostrarSecao(idSecao: string) {
     sec.style.display = id === idSecao ? 'block' : 'none';
   });
 
-  mostrarMensagem('', ''); // Limpa a mensagem geral
+  mostrarMensagem('', '');
 }
 
 // Exibe uma mensagem de erro ou sucesso para o usuário
@@ -40,7 +40,7 @@ function mostrarMensagem(msg: string, tipo: 'erro' | 'sucesso' | '' = '') {
   container.className = tipo;
 }
 
-// Atualiza visualmente a lista de produtos na aba "Listar"
+// Atualiza a lista de produtos na aba "Listar"
 function atualizarLista() {
   const listaEstoque = document.getElementById('lista-estoque')!;
   listaEstoque.innerHTML = '';
@@ -59,9 +59,9 @@ function atualizarLista() {
 function init() {
   carregarDoLocalStorage(); // Recupera os dados salvos
   mostrarSecao('sec-adicionar'); // Abre a aba "Adicionar" por padrão
-  atualizarLista(); // Atualiza a lista visual
+  atualizarLista(); // Atualiza a lista
 
-  // Adiciona os eventos de clique para mudar de aba
+  // Adiciona os eventos de clique para mudar de aba (sessoes)
   document.getElementById('btn-mostrar-adicionar')!.addEventListener('click', () => mostrarSecao('sec-adicionar'));
   document.getElementById('btn-mostrar-buscar')!.addEventListener('click', () => mostrarSecao('sec-buscar'));
   document.getElementById('btn-mostrar-remover')!.addEventListener('click', () => mostrarSecao('sec-remover'));
@@ -175,5 +175,4 @@ function init() {
   document.getElementById('btn-listar')!.addEventListener('click', atualizarLista);
 }
 
-// Executa a função init quando o DOM estiver carregado
 window.addEventListener('DOMContentLoaded', init);
